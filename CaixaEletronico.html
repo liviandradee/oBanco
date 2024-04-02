@@ -1,0 +1,136 @@
+<html>
+
+<head>
+
+	<script>
+
+    var nome = prompt("Qual seu nome?")
+	alert("Olá," + ' ' + nome + ", é um prazer ter você aqui!")
+
+
+		var saldo = 100.5; //Float
+		function inicio() {
+
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) Extrato 3.) Saque 4.) Depósito 5.) Transferência 6.)Sair'));
+
+			if (escolha === 1) {
+				Condsenha()
+				ver_saldo();
+			} else if (escolha === 2) {
+				Condsenha()
+				ver_extrato();
+			} else if (escolha === 3) {
+				Condsenha()
+				fazer_saque();
+			} else if (escolha === 4) {
+				fazer_deposito();
+			} else if (escolha === 5) {
+				Condsenha()
+				fazer_trans();
+			} else if (escolha === 6) {
+				sair();
+			}
+			 else {
+				erro();
+			}
+		}		
+
+		function ver_saldo() {
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+		}
+
+		function fazer_deposito() {
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			// Not a Number
+			if (isNaN(deposito) || deposito === '') {
+				alert('Por favor, informe um número:');
+				fazer_deposito();
+			} else if ( fazer_deposito <= 0) {
+				alert('Operação não autorizada')
+			}
+			
+			else {
+				saldo += deposito;
+				ver_saldo();
+			}
+		}
+
+		function fazer_trans() {
+			var conta = parseInt(prompt("Qual o número da conta?"))
+			if (isNaN(conta) || conta === '') {
+				alert('Por favor, informe um número:');
+				fazer_trans()
+			} else {
+				var valor_trans = parseFloat(prompt ("Digite o valor da transferência"))
+				if (valor_trans > saldo || saldo <= 0)  {
+					alert("Operação não autorizada")
+				} else { 
+					saldo -= valor_trans
+					alert("Sua transferência foi realizada")
+				}
+			}
+			inicio();
+		}
+
+		function fazer_saque() {
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número:');
+				fazer_saque();
+			} else if (fazer_saque > saldo || fazer_saque <= 0) {
+				alert("Operação não autorizada")
+			}
+			else {
+				saldo -= saque;
+				
+				ver_saldo();
+			}
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 4');
+			inicio();
+		}
+		function Condsenha () {
+			var senha = 3589;
+			var digiteSenha = parseInt(prompt("Por favor, digite sua senha:"))
+			if (isNaN(digiteSenha) || digiteSenha === '') {
+				alert('Por favor, informe um número:');
+				Condsenha();
+			} else if (digiteSenha === 3589 ) {
+				alert("Senha correta")
+		
+			}
+			else {
+				alert("Senha incorreta.")
+				Condsenha();
+			}
+		} 
+
+		function ver_extrato() {
+			alert('Farmácias Gabriel' + " " + 'Valor: ' + " " + 'R$ 24' + " " + 'Lojas Debinha' + " " + 'Valor: ' + " " + 'R$ 128,80' + " " + 'Mercado Jaja' + " " + 'Valor: ' + " " + 'R$ 720');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+			alert( nome + " " + 'foi um prazer ter você por aqui!')
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+		
+		
+		inicio();
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
